@@ -7,8 +7,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/udemykcloud/helm.git'
-    path: gitops-repo/helm-charts/guestbook-ui
+    repoURL: 'https://github.com/ranjiniganeshan/guestbook-argocd-demo.git'
+    path: gitops/helm-charts/
     targetRevision: main
     helm:
       valueFiles:
