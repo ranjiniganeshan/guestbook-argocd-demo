@@ -1,0 +1,29 @@
+replicaCount: 2
+
+image:
+  repository: udemykcloud534/guestbook
+  tag: green
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: dockerhub-secret
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  className: nginx
+  path: /
+  pathType: Prefix
+
+rollout:
+  revisionHistoryLimit: 2
+  strategy:
+    blueGreen:
+      activeService: guestbook-ui
+      previewService: guestbook-ui-canary
+      autoPromotionEnabled: false
+      scaleDownDelaySeconds: 300
