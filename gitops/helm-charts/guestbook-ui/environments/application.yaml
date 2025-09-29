@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/ranjiniganeshan/guestbook-argocd-demo.git'
-    path: gitops-repo/helm-charts/guestbook-ui
+    path: gitops/helm-charts/guestbook-ui
     targetRevision: main
     helm:
       valueFiles:
