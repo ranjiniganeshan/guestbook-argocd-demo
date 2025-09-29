@@ -1,1 +1,22 @@
 
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-ui-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/udemykcloud/helm.git'
+    path: gitops-repo/helm-charts/guestbook-ui
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-dev.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
